@@ -16,7 +16,7 @@ class GPT2LMScorer(TransformersLMScorer):
 
         # pylint: disable=attribute-defined-outside-init
         self.tokenizer = AutoTokenizer.from_pretrained(
-            model_name, use_fast=True, add_special_tokens=False
+            "gpt2-medium", use_fast=True, add_special_tokens=False
         )
         # Add the pad token to GPT2 dictionary.
         # len(tokenizer) = vocab_size + 1

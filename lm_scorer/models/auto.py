@@ -18,14 +18,8 @@ class AutoLMScorer:
 
     @classmethod
     def from_pretrained(cls, model_name: str, **kwargs: Any) -> LMScorer:
-        for model_class in cls.MODEL_CLASSES:
-            if model_name not in model_class.supported_model_names():
-                continue
-            return model_class(model_name, **kwargs)
-        raise ValueError(
-            "Unrecognized model name."
-            "Can be one of: %s" % ", ".join(cls.supported_model_names()),
-        )
+        return GPT2LMScorer(model_name, **kwargs)
+
 
     @classmethod
     def supported_model_names(cls) -> Iterable[str]:
